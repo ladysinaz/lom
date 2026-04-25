@@ -1,0 +1,449 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Nunito:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+#lr{background:#1a0933;font-family:'Nunito',sans-serif;color:#f3e8ff;border-radius:16px;overflow:hidden;min-height:500px}
+.hdr{background:linear-gradient(135deg,#2d0a5e,#4a1080,#2d0a5e);border-bottom:1px solid rgba(196,132,252,.3);padding:1.5rem 1.5rem 1.25rem;text-align:center}
+
+/* ── LOGO SLOT ─────────────────────────────────────────────────
+   To add your logo: replace the entire .logo-slot div with:
+   <img src="YOUR_IMAGE_URL" style="width:88px;height:88px;border-radius:50%;border:2px solid rgba(196,132,252,.6);margin:0 auto .75rem;display:block;object-fit:cover">
+   ──────────────────────────────────────────────────────────── */
+.logo-slot{width:88px;height:88px;border-radius:50%;border:2px dashed rgba(196,132,252,.45);margin:0 auto .85rem;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;cursor:default}
+.logo-slot span{font-size:10px;color:rgba(196,132,252,.5);text-align:center;line-height:1.3;padding:0 6px}
+
+.lom-name{font-family:'Cinzel',serif;font-size:24px;font-weight:600;color:#f472b6;letter-spacing:.06em;text-shadow:0 0 16px rgba(244,114,182,.5);margin-bottom:4px}
+.lom-sub{font-family:'Cinzel',serif;font-size:15px;color:#fde047;margin-bottom:.4rem;line-height:1.4}
+.lom-tag{font-size:12px;color:#c4b5d4;letter-spacing:.12em;text-transform:uppercase}
+
+.rbar{background:rgba(134,239,172,.08);border:1px solid rgba(134,239,172,.25);border-radius:8px;margin:.85rem 1.5rem 0;padding:.55rem 1rem;font-size:13px;color:#86efac;text-align:center;font-style:italic}
+
+/* TUB */
+.tub-wrap{margin:.85rem 1.5rem 0}
+.tub-lbl{font-size:12px;color:#c4b5d4;margin-bottom:5px;text-align:center;min-height:16px}
+.tub-outer{position:relative;width:100%;height:64px;border-radius:10px;border:1.5px solid rgba(196,132,252,.45);overflow:hidden;background:#100420}
+.tub-ground{position:absolute;bottom:0;left:0;width:100%;height:50%;background:#3d2410}
+.tub-myc{position:absolute;bottom:0;left:0;height:50%;background:#3d2410;transition:width .5s ease;width:0%}
+.tub-life{position:absolute;bottom:32px;left:0;width:100%;height:32px;pointer-events:none}
+.tub-pct{position:absolute;right:10px;bottom:7px;font-size:12px;font-weight:700;color:rgba(253,224,71,.95);text-shadow:0 1px 4px #000;z-index:10}
+
+/* NAV */
+.pnav{display:flex;gap:7px;padding:1rem 1.5rem 0;flex-wrap:wrap}
+.pbtn{flex:1;min-width:100px;background:#2a1048;border:1px solid rgba(196,132,252,.3);border-radius:12px;padding:.65rem .4rem;cursor:pointer;text-align:center;color:#c4b5d4;font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;transition:all .2s}
+.pbtn:hover{border-color:#c084fc;background:#341255;color:#f3e8ff}
+.pbtn.act{border-color:#f472b6;background:rgba(244,114,182,.12);color:#f472b6}
+.pbtn.done{border-color:#86efac;color:#86efac;background:rgba(134,239,172,.08)}
+.pi{font-size:19px;display:block;margin-bottom:3px}
+.pn{font-size:10px;opacity:.6;display:block;margin-bottom:1px}
+
+/* PHASE CONTENT */
+.pc{padding:1.25rem 1.5rem 1.75rem}
+.ph-title{font-family:'Cinzel',serif;font-size:18px;color:#fde047;margin-bottom:.25rem}
+.ph-link{display:inline-block;margin-top:6px;font-size:12px;color:#c084fc;text-decoration:none;border:1px solid rgba(196,132,252,.4);border-radius:20px;padding:3px 11px}
+.ph-desc{font-size:14px;color:#c4b5d4;line-height:1.6;margin-top:7px}
+.ph-feel{font-size:13px;color:rgba(196,132,252,.85);font-style:italic;margin-top:5px}
+.slbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c084fc;margin:.85rem 0 .5rem}
+
+/* LEGEND */
+.legend{background:rgba(196,132,252,.07);border:1px solid rgba(196,132,252,.2);border-radius:10px;padding:.65rem 1rem;margin-bottom:.75rem;font-size:12px;color:#c4b5d4;line-height:1.8}
+.legend strong{color:#f3e8ff;font-weight:700}
+.legend-row{display:flex;align-items:center;gap:8px}
+
+/* STEPS */
+.sg{display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+.sr{background:#2a1048;border:1px solid rgba(196,132,252,.3);border-radius:10px;padding:.7rem 1.1rem;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .15s;user-select:none;-webkit-user-select:none}
+.sr:hover{background:#341255}
+.sr:active{transform:scale(.98)}
+.ss{font-size:17px;flex-shrink:0;width:24px;text-align:center}
+.st{font-size:14px;flex:1;color:#f3e8ff;line-height:1.4}
+.sr.dn{border-color:rgba(134,239,172,.55);background:rgba(134,239,172,.06)}
+.sr.dn .st{color:#86efac}
+.sr.sk{border-color:rgba(248,113,113,.55);background:rgba(248,113,113,.05)}
+.sr.sk .st{color:#f87171}
+.step-link{font-size:11px;color:#c084fc;text-decoration:none;border:1px solid rgba(196,132,252,.35);border-radius:20px;padding:3px 9px;white-space:nowrap;flex-shrink:0}
+
+.dnb{background:linear-gradient(90deg,rgba(196,132,252,.12),rgba(244,114,182,.1));border:1px solid #c084fc;border-radius:10px;padding:.75rem 1rem;text-align:center;font-size:14px;font-weight:700;color:#c084fc;margin:.5rem 0 1rem}
+
+/* CHECKPOINTS */
+.cpcard{background:#341255;border:1px solid rgba(196,132,252,.25);border-radius:12px;padding:1.1rem;margin-bottom:10px}
+.cpt{font-size:13px;font-weight:700;color:#c084fc;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cp-link{font-size:11px;color:#c084fc;text-decoration:none;border:1px solid rgba(196,132,252,.4);border-radius:20px;padding:3px 9px;font-weight:400}
+.cps{background:rgba(134,239,172,.07);border:1px solid rgba(134,239,172,.2);border-radius:8px;padding:.55rem .85rem;font-size:13px;margin-bottom:8px;line-height:1.5}
+.cpsl{font-size:12px;font-weight:700;color:#86efac;margin-bottom:3px}
+.cpf{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:.55rem .85rem;font-size:13px;margin-bottom:8px;line-height:1.5}
+.cpfl{font-size:12px;font-weight:700;color:#fde047;margin-bottom:3px}
+.cpm{background:rgba(196,132,252,.07);border:1px solid rgba(196,132,252,.2);border-radius:8px;padding:.55rem .85rem;font-size:13px;margin-bottom:8px;line-height:1.5}
+.cpml{font-size:12px;font-weight:700;color:#c084fc;margin-bottom:3px}
+.sbts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.sbt{flex:1;min-width:85px;padding:.5rem .6rem;border-radius:20px;border:1px solid;font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;background:transparent;transition:all .15s}
+.sg-btn{border-color:#86efac;color:#86efac}
+.sg-btn:hover,.sg-btn.sel{background:rgba(134,239,172,.2)}
+.su-btn{border-color:#fde047;color:#fde047}
+.su-btn:hover,.su-btn.sel{background:rgba(253,224,71,.15)}
+.so-btn{border-color:#f87171;color:#f87171}
+.so-btn:hover,.so-btn.sel{background:rgba(248,113,113,.15)}
+.fb{border-radius:10px;padding:.7rem .85rem;font-size:13px;margin-top:8px;line-height:1.6;display:none}
+.fbg{background:rgba(134,239,172,.1);border:1px solid rgba(134,239,172,.3);color:#86efac}
+.fbu{background:rgba(253,224,71,.08);border:1px solid rgba(253,224,71,.3);color:#fde047}
+.fbo{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);color:#f87171}
+
+/* STUCK */
+.skbox{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);border-radius:12px;padding:1rem;margin-top:1rem;display:none}
+.skt{font-size:14px;font-weight:700;color:#f87171;margin-bottom:.75rem}
+.skbs{display:flex;flex-direction:column;gap:8px}
+.skb{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:8px;padding:.6rem .9rem;color:#f87171;font-size:13px;font-weight:600;cursor:pointer;font-family:'Nunito',sans-serif;text-align:left}
+.skb:hover{background:rgba(248,113,113,.18)}
+
+.nxtbtn{display:block;width:100%;margin-top:1.4rem;padding:.9rem;background:linear-gradient(135deg,rgba(244,114,182,.2),rgba(196,132,252,.2));border:1px solid #f472b6;border-radius:12px;color:#f472b6;font-family:'Cinzel',serif;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:.05em;transition:all .2s}
+.nxtbtn:hover{background:linear-gradient(135deg,rgba(244,114,182,.3),rgba(196,132,252,.3))}
+.mslot{background:rgba(196,132,252,.05);border:1px dashed rgba(196,132,252,.3);border-radius:10px;padding:.65rem;text-align:center;font-size:12px;color:rgba(196,132,252,.5);margin-bottom:.85rem;font-style:italic}
+
+/* COMPLETE */
+.cscr{text-align:center;padding:2.5rem 1.5rem;display:none}
+.ctitle{font-family:'Cinzel',serif;font-size:24px;color:#fde047;margin-bottom:.6rem}
+.csub{font-size:15px;color:#c4b5d4;margin-bottom:1.75rem}
+.nas{display:flex;flex-direction:column;gap:10px;max-width:340px;margin:0 auto}
+.nab{background:#2a1048;border:1px solid rgba(196,132,252,.3);border-radius:12px;padding:.8rem 1rem;color:#f3e8ff;font-size:14px;font-weight:600;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s;text-align:left;display:flex;align-items:center;gap:10px}
+.nab:hover{border-color:#c084fc;background:#341255}
+
+/* long-press ripple hint */
+@keyframes held{0%{opacity:.4}100%{opacity:1}}
+.sr.holding{animation:held .5s ease infinite alternate}
+</style>
+
+<div id="lr">
+
+<div class="hdr">
+  <!-- ═══════════════════════════════════════════════════════════
+       LOGO: replace this entire block with your <img> tag, e.g.:
+       <img src="https://your-url.com/logo.png"
+            style="width:88px;height:88px;border-radius:50%;
+                   border:2px solid rgba(196,132,252,.6);
+                   margin:0 auto .85rem;display:block;object-fit:cover">
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="logo-slot">
+    <span>🍄</span>
+    <span>Add logo here</span>
+  </div>
+
+  <div class="lom-name">Ladies of Mycology</div>
+  <div class="lom-sub">Complete Beginner → First Harvest Roadmap</div>
+  <div class="lom-tag">Grow · Learn · Cultivate</div>
+</div>
+
+<div class="rbar">There is no exact timeline. Some grows take longer. That does not mean failure.</div>
+
+<div class="tub-wrap">
+  <div class="tub-lbl" id="tlbl">Complete steps and checkpoints to watch your grow come to life</div>
+  <div class="tub-outer">
+    <div class="tub-ground"></div>
+    <div class="tub-myc" id="tubMyc"></div>
+    <div class="tub-life" id="tubLife"></div>
+    <div class="tub-pct" id="tubPct">0%</div>
+  </div>
+</div>
+
+<div class="pnav">
+  <button class="pbtn act" id="pb0" onclick="showPhase(0)"><span class="pi">🧤</span><span class="pn">Phase 1</span>Setup</button>
+  <button class="pbtn" id="pb1" onclick="showPhase(1)"><span class="pi">💉</span><span class="pn">Phase 2</span>Inoculation</button>
+  <button class="pbtn" id="pb2" onclick="showPhase(2)"><span class="pi">🛍️</span><span class="pn">Phase 3</span>Colonization</button>
+  <button class="pbtn" id="pb3" onclick="showPhase(3)"><span class="pi">🍄‍🟫</span><span class="pn">Phase 4</span>Fruiting</button>
+</div>
+
+<div id="ppanels"></div>
+<div class="cscr" id="cscr">
+  <div style="font-size:56px;margin-bottom:.85rem">🍄‍🟫</div>
+  <div class="ctitle">First Harvest Complete</div>
+  <div class="csub">You grew something from nothing. That is real.</div>
+  <div class="nas">
+    <button class="nab" onclick="document.getElementById('cscr').style.display='none';document.getElementById('ppanels').style.display='block';resetAll()"><span>🔄</span>Start another grow</button>
+    <button class="nab" onclick="sendPrompt('I just completed my first mushroom harvest with Ladies of Mycology. What is a more advanced growing method I could try next?')"><span>⬆️</span>Try a more advanced method ↗</button>
+    <button class="nab" onclick="sendPrompt('I want to share my first mushroom harvest. Tips for photographing and documenting a mushroom grow?')"><span>📸</span>Share your results ↗</button>
+  </div>
+</div>
+</div>
+
+<script>
+// ─── LINKS CONFIG ─────────────────────────────────────────────
+// Paste a URL between quotes to add a "🔗 Learn more" button.
+// Leave "" for nothing. Edit here — no rebuild needed.
+const LINKS = {
+  phase_0_link:"",phase_0_step_0:"",phase_0_step_1:"",phase_0_step_2:"",phase_0_cp_0:"",phase_0_cp_1:"",
+  phase_1_link:"",phase_1_step_0:"",phase_1_step_1:"",phase_1_step_2:"",phase_1_step_3:"",phase_1_cp_0:"",phase_1_cp_1:"",
+  phase_2_link:"",phase_2_step_0:"",phase_2_step_1:"",phase_2_step_2:"",phase_2_step_3:"",phase_2_cp_0:"",phase_2_cp_1:"",
+  phase_3_link:"",phase_3_step_0:"",phase_3_step_1:"",phase_3_step_2:"",phase_3_step_3:"",phase_3_cp_0:"",phase_3_cp_1:""
+};
+// ──────────────────────────────────────────────────────────────
+
+const PH=[
+  {id:0,title:'Phase 1: Setup',desc:'Get fully prepared before you start. A calm, organised setup makes everything easier later.',feel:'Feeling overwhelmed by gear lists? Take it one item at a time.',
+   steps:['Choose your grow method (kit, grain jars, bulk substrate)','Gather all materials before you begin','Prepare a clean, controlled workspace'],
+   cps:[
+    {t:'All materials are ready',s:'Everything on your materials list is accounted for and within reach.',f:'Do not start until every item is gathered. Substituting mid-process causes most beginner issues.',m:'You do not need a fancy setup. A clean counter with rubbing alcohol and gloves is enough.',
+     fb:{g:'✓ Perfect. A prepared grower is a successful grower. Move to your next step.',u:'Double-check your list item by item. If one thing is missing, pause and source it first — no rush.',o:'1. Write out what is missing. 2. Source those items. 3. Do not improvise on sterilisation supplies.'}},
+    {t:'Workspace is clean and controlled',s:'Surfaces wiped down. Still air. No drafts, pets, or foot traffic nearby.',f:'Wipe with 70% isopropyl. Close windows and doors. Turn off fans. Let air settle 10 minutes.',m:'You do not need a lab. You need a few minutes of care and a still environment.',
+     fb:{g:'✓ You are ready to move into inoculation. Your clean space is your best tool.',u:'Still air is the goal. Turn off air movement, wipe surfaces again, then wait 10 minutes.',o:'1. Re-wipe all surfaces. 2. Clear the room of movement. 3. Wait 10 minutes before trying again.'}}
+   ],media:true},
+  {id:1,title:'Phase 2: Inoculation',desc:'Introduce your culture to the substrate. Slow and clean wins every time.',feel:'This is where most beginners feel nervous. That is completely normal.',
+   steps:['Sterilise or pasteurise your substrate as required for your method','Inoculate cleanly (syringe, agar transfer, or grain spawn)','Seal containers and label with species and date','Store in a stable, warm, dark location'],
+   cps:[
+    {t:'Process stayed clean',s:'No spills, no open exposure, no contamination risk during inoculation.',f:'If something touched an unsterilised surface, isolate that container and monitor closely.',m:'One small mistake does not mean the whole batch is ruined. Contamination usually shows within 1–2 weeks.',
+     fb:{g:'✓ Clean inoculation is the hardest part. You did it. Now let it rest.',u:'Label that container with a question mark and monitor separately. You will know within a week.',o:'1. Isolate suspect containers. 2. Mark for observation. 3. Note what happened to adjust next time.'}},
+    {t:'Containers properly sealed and stored',s:'Lids secure, ports sealed, stored at 70–75°F in darkness.',f:'Check seals now. A loose lid invites contaminants. Tape, parafilm, or polyfil should be snug.',m:'You do not need to check every hour. Sealed and stored — now the waiting begins.',
+     fb:{g:'✓ Sealed and stored. Your work here is done. The mycelium takes over now.',u:'Check each seal one more time. If in doubt, add tape over the injection port or lid edge.',o:'1. Re-seal any loose lids. 2. Confirm dark stable temperature. 3. Avoid moving containers for the first few days.'}}
+   ],media:true},
+  {id:2,title:'Phase 3: Colonization',desc:'Mycelium is spreading through your substrate. Your job right now is to leave it alone.',feel:'This is where most beginners feel unsure. That is normal — nothing looks like it is happening, and then suddenly it is.',doNothing:true,
+   steps:['Leave containers undisturbed in storage','Check visually once every few days — do not open','Maintain a stable temperature (70–75°F)','Wait for full colonisation before moving forward'],
+   cps:[
+    {t:'White growth is spreading',s:'Fluffy white or rope-like mycelium spreading from inoculation points. May take 1–3 weeks to begin visibly.',f:'Nothing visible after 2–3 weeks: increase temp slightly. Green, black, or pink = contamination.',m:'Slow colonisation is not failure. Some species take several weeks. Check temp and leave it alone.',
+     fb:{g:'✓ White growth is healthy growth. Keep conditions stable and keep waiting.',u:'Give it more time. Check your temperature. White fuzz is mycelium — exactly what you want.',o:'1. White = good. Green/black/pink = contamination. 2. Isolate contaminated containers. 3. Check temperature range.'}},
+    {t:'No contamination colours present',s:'Only white or off-white growth. No green, black, orange, or slimy patches.',f:'Contaminated containers: seal and discard outside. Do not open them indoors.',m:'Blue or purple bruising can be normal for some species. Solid green or black is not.',
+     fb:{g:'✓ Clean and colonising. Nothing to do but wait.',u:'Post a photo to the community if unsure. Colour ID is easier with a second set of eyes.',o:'1. Seal that container immediately. 2. Remove from grow space. 3. Discard outside. 4. Remaining containers are fine.'}}
+   ],media:true},
+  {id:3,title:'Phase 4: Fruiting + Harvest',desc:'Mycelium is fully colonised. Introduce fruiting conditions and watch mushrooms form.',feel:'This is the most exciting phase — and the most tempting to over-manage. Trust the process.',
+   steps:['Introduce fruiting conditions (fresh air exchange, humidity, indirect light)','Fan and mist 2–3 times daily — mist the walls, not the mycelium','Watch for pins forming (tiny white or cream bumps on the surface)','Harvest just before or as the veil beneath the caps begins to tear'],
+   cps:[
+    {t:'Pins are forming',s:'Tiny white or cream bumps appearing on the substrate surface. Often form in clusters.',f:'No pins after 7–10 days: try a temp drop (65°F overnight), increase fresh air, or lightly scrape the surface.',m:'Pins can take 5–14 days. Not seeing them on day 3 is completely normal.',
+     fb:{g:'✓ Pins mean you are close. Maintain humidity and airflow — do not disturb them.',u:'Give it 3–5 more days. Ensure fresh air is circulating. A small temp drop overnight can help.',o:'1. Try a 10°F temp drop overnight. 2. Increase fresh air exchanges. 3. Mist walls lightly. 4. Wait 5 more days.'}},
+    {t:'Mushrooms maturing normally',s:'Caps rounding and expanding. Veil stretching but not yet fully torn.',f:'Harvest before the veil tears. Twist and pull gently at the base — do not cut flush to the surface.',m:'A slightly open cap is fine. An open cap dropping spores means you waited a little long — still usable.',
+     fb:{g:'✓ Harvest time. Twist gently at the base. You grew mushrooms.',u:'When in doubt, harvest a little early. Slightly immature beats over-mature.',o:'1. Harvest everything now. 2. Clean the surface. 3. Allow 5–7 days rest before the next flush.'}}
+   ],media:true}
+];
+
+// TOTAL SCOREABLE: 15 steps + 8 checkpoints = 23
+const GRAND_TOTAL = 23;
+
+// State: steps = 0 (not done) or 1 (done); stuck = separate flag
+let stepDone  = [[0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+let stepStuck = [[0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+let cpSt      = [[null,null],[null,null],[null,null],[null,null]];
+let phaseDone = [false,false,false,false];
+let holdTimers = {};
+
+function score(){
+  let n=0;
+  for(let p=0;p<4;p++){
+    for(let s=0;s<stepDone[p].length;s++) if(stepDone[p][s]===1) n++;
+    for(let c=0;c<cpSt[p].length;c++) if(cpSt[p][c]==='g') n++;
+  }
+  return n;
+}
+
+function drawTub(){
+  const s = score();
+  const pct = Math.round((s / GRAND_TOTAL) * 100);
+  document.getElementById('tubPct').textContent = pct+'%';
+
+  const el = document.getElementById('tubMyc');
+  el.style.width = pct+'%';
+
+  // colour: dark brown → warm cream
+  const t = Math.min(pct/100, 1);
+  const r = Math.round(61+t*177), g2 = Math.round(36+t*162), b = Math.round(16+t*122);
+  el.style.background = pct<3 ? '#3d2410'
+    : 'linear-gradient(180deg,rgb('+(r+18)+','+(g2+18)+','+(b+10)+'),rgb('+r+','+g2+','+b+'))';
+
+  const lbl = document.getElementById('tlbl');
+  if(pct===0)      lbl.textContent='Complete steps and checkpoints to watch your grow come to life';
+  else if(pct<25)  lbl.textContent='Colonisation beginning — mycelium is waking up...';
+  else if(pct<50)  lbl.textContent='Mycelium spreading — hyphal knots forming...';
+  else if(pct<75)  lbl.textContent='Pins emerging — fruiting has begun!';
+  else if(pct<100) lbl.textContent='Mushrooms maturing — harvest approaching!';
+  else             lbl.textContent='🍄‍🟫 First harvest complete!';
+
+  const life = document.getElementById('tubLife');
+  life.innerHTML='';
+  const svg = mkSVG();
+
+  if(pct>=25 && pct<50){
+    // hyphal knots
+    const xs=[38,90,155,215,278,340,370];
+    const n=Math.min(Math.floor((pct-25)/4)+2, xs.length);
+    for(let i=0;i<n;i++){
+      if(i>0){ const l=mk('line'); l.setAttribute('x1',xs[i-1]);l.setAttribute('y1',26);l.setAttribute('x2',xs[i]);l.setAttribute('y2',26);l.setAttribute('stroke','rgba(240,232,200,.3)');l.setAttribute('stroke-width','1');svg.appendChild(l); }
+      const c=mk('circle'); c.setAttribute('cx',xs[i]);c.setAttribute('cy',26);c.setAttribute('r',4+(i%2));c.setAttribute('fill','rgba(245,238,210,.92)');svg.appendChild(c);
+    }
+  } else if(pct>=50 && pct<75){
+    // pins
+    const xs=[30,75,130,185,240,295,350];
+    const n=Math.min(Math.floor((pct-50)/4)+3, xs.length);
+    for(let i=0;i<n;i++){
+      const h=9+(i%3)*3;
+      const st=mk('rect'); st.setAttribute('x',xs[i]);st.setAttribute('y',32-h);st.setAttribute('width',2.5);st.setAttribute('height',h);st.setAttribute('fill','#d8c898');st.setAttribute('rx',1);svg.appendChild(st);
+      const cp=mk('ellipse'); cp.setAttribute('cx',xs[i]+1.25);cp.setAttribute('cy',32-h);cp.setAttribute('rx',5);cp.setAttribute('ry',3);cp.setAttribute('fill','#8a6030');svg.appendChild(cp);
+    }
+  } else if(pct>=75){
+    // full mushrooms
+    const xs=[28,80,138,196,255,315,365];
+    const n=Math.min(Math.floor((pct-75)/5)+3, xs.length);
+    for(let i=0;i<n;i++){
+      const h=14+(i%3)*5, sw=3+(i%2);
+      const st=mk('rect'); st.setAttribute('x',xs[i]);st.setAttribute('y',32-h);st.setAttribute('width',sw);st.setAttribute('height',h);st.setAttribute('fill','#c0a870');st.setAttribute('rx',1.5);svg.appendChild(st);
+      const cp=mk('ellipse'); cp.setAttribute('cx',xs[i]+sw/2);cp.setAttribute('cy',32-h);cp.setAttribute('rx',sw*3.6);cp.setAttribute('ry',sw*1.8);cp.setAttribute('fill',i%2===0?'#6a4820':'#4e3010');svg.appendChild(cp);
+    }
+  }
+  life.appendChild(svg);
+}
+
+function mkSVG(){ const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 400 32');s.setAttribute('width','100%');s.setAttribute('height','32');s.style.cssText='display:block;position:absolute;bottom:0;left:0';return s; }
+function mk(t){ return document.createElementNS('http://www.w3.org/2000/svg',t); }
+
+// ── STEP INTERACTION ─────────────────────────────────────────
+// Single click = toggle done/not-done
+// Long press (600ms) = toggle stuck
+function stepPointerDown(pi,si){
+  const id='h_'+pi+'_'+si;
+  holdTimers[id]=setTimeout(function(){
+    holdTimers[id]=null;
+    stepStuck[pi][si] = stepStuck[pi][si] ? 0 : 1;
+    if(stepStuck[pi][si]) stepDone[pi][si]=0; // stuck clears done
+    refreshStep(pi,si);
+    const hasSk=stepStuck[pi].some(function(v){return v===1;});
+    const sb=document.getElementById('skb'+pi);
+    if(sb) sb.style.display=hasSk?'block':'none';
+    drawTub();
+  },600);
+}
+
+function stepPointerUp(pi,si){
+  const id='h_'+pi+'_'+si;
+  if(holdTimers[id]){
+    clearTimeout(holdTimers[id]);
+    holdTimers[id]=null;
+    // short tap — toggle done (only if not stuck)
+    if(!stepStuck[pi][si]){
+      stepDone[pi][si] = stepDone[pi][si]===1 ? 0 : 1;
+      refreshStep(pi,si);
+      drawTub();
+    }
+  }
+}
+
+function stepPointerCancel(pi,si){
+  const id='h_'+pi+'_'+si;
+  if(holdTimers[id]){ clearTimeout(holdTimers[id]); holdTimers[id]=null; }
+}
+
+function refreshStep(pi,si){
+  const row=document.getElementById('sr_'+pi+'_'+si);
+  if(!row) return;
+  const done=stepDone[pi][si]===1;
+  const stuck=stepStuck[pi][si]===1;
+  row.className='sr'+(done?' dn':stuck?' sk':'');
+  row.querySelector('.ss').textContent = done?'🟩':stuck?'🔴':'⬜';
+}
+
+function pickCP(pi,ci,type){
+  ['g','u','o'].forEach(function(t){
+    const b=document.getElementById('cb_'+pi+'_'+ci+'_'+t); if(b) b.classList.remove('sel');
+    const f=document.getElementById('cf_'+pi+'_'+ci+'_'+t); if(f) f.style.display='none';
+  });
+  cpSt[pi][ci]=type;
+  const btn=document.getElementById('cb_'+pi+'_'+ci+'_'+type); if(btn) btn.classList.add('sel');
+  const fb=document.getElementById('cf_'+pi+'_'+ci+'_'+type); if(fb) fb.style.display='block';
+  drawTub();
+}
+
+function lnk(key,cls){
+  const url=LINKS[key]; if(!url) return '';
+  return '<a class="'+cls+'" href="'+url+'" target="_blank">🔗 Learn more</a>';
+}
+
+function showPhase(idx){
+  if(idx>=4){ document.getElementById('ppanels').style.display='none'; document.getElementById('cscr').style.display='block'; drawTub(); return; }
+  document.getElementById('ppanels').style.display='block';
+  document.getElementById('cscr').style.display='none';
+  for(let i=0;i<4;i++) document.getElementById('pb'+i).className='pbtn'+(i===idx?' act':(phaseDone[i]?' done':''));
+  renderPhase(idx);
+}
+
+function markPhaseDone(idx){
+  phaseDone[idx]=true;
+  document.getElementById('pb'+idx).className='pbtn done';
+  if(idx<3) showPhase(idx+1); else showPhase(4);
+}
+
+function resetAll(){
+  stepDone=[[0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+  stepStuck=[[0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+  cpSt=[[null,null],[null,null],[null,null],[null,null]];
+  phaseDone=[false,false,false,false];
+  for(let i=0;i<4;i++) document.getElementById('pb'+i).className='pbtn'+(i===0?' act':'');
+  drawTub(); renderPhase(0);
+}
+
+function renderPhase(idx){
+  const p=PH[idx];
+
+  const legend='<div class="legend">'
+    +'<div style="font-size:12px;font-weight:700;color:#f3e8ff;margin-bottom:6px">How to use the steps below:</div>'
+    +'<div class="legend-row"><span style="font-size:16px">⬜</span> <span><strong>Tap once</strong> to mark a step complete 🟩</span></div>'
+    +'<div class="legend-row"><span style="font-size:16px">🟩</span> <span><strong>Tap again</strong> to unmark it ⬜</span></div>'
+    +'<div class="legend-row"><span style="font-size:16px">🔴</span> <span><strong>Hold for 1 second</strong> to flag as stuck — unlocks help options below</span></div>'
+    +'</div>';
+
+  const stepsHtml=p.steps.map(function(s,si){
+    const done=stepDone[idx][si]===1, stuck=stepStuck[idx][si]===1;
+    const em=done?'🟩':stuck?'🔴':'⬜';
+    const cl='sr'+(done?' dn':stuck?' sk':'');
+    return '<div class="'+cl+'" id="sr_'+idx+'_'+si+'"'
+      +' onpointerdown="stepPointerDown('+idx+','+si+')"'
+      +' onpointerup="stepPointerUp('+idx+','+si+')"'
+      +' onpointerleave="stepPointerCancel('+idx+','+si+')"'
+      +' onpointercancel="stepPointerCancel('+idx+','+si+')"'
+      +' style="touch-action:none">'
+      +'<span class="ss">'+em+'</span>'
+      +'<span class="st">'+s+'</span>'
+      +lnk('phase_'+idx+'_step_'+si,'step-link')
+      +'</div>';
+  }).join('');
+
+  const cpsHtml=p.cps.map(function(cp,ci){
+    const cur=cpSt[idx][ci];
+    return '<div class="cpcard">'
+      +'<div class="cpt">🔍 Checkpoint: '+cp.t+lnk('phase_'+idx+'_cp_'+ci,'cp-link')+'</div>'
+      +'<div class="cps"><div class="cpsl">👀 You should be seeing this:</div>'+cp.s+'</div>'
+      +'<div class="cpf"><div class="cpfl">⚠️ If not, here\'s what to fix:</div>'+cp.f+'</div>'
+      +'<div class="cpm"><div class="cpml">🧠 What most people think vs reality:</div>'+cp.m+'</div>'
+      +'<div class="sbts">'
+        +'<button class="sbt sg-btn'+(cur==='g'?' sel':'')+'" id="cb_'+idx+'_'+ci+'_g" onclick="pickCP('+idx+','+ci+',\'g\')">✓ Looks right</button>'
+        +'<button class="sbt su-btn'+(cur==='u'?' sel':'')+'" id="cb_'+idx+'_'+ci+'_u" onclick="pickCP('+idx+','+ci+',\'u\')">? Not sure</button>'
+        +'<button class="sbt so-btn'+(cur==='o'?' sel':'')+'" id="cb_'+idx+'_'+ci+'_o" onclick="pickCP('+idx+','+ci+',\'o\')">✗ Something\'s off</button>'
+      +'</div>'
+      +'<div class="fb fbg" id="cf_'+idx+'_'+ci+'_g" style="display:'+(cur==='g'?'block':'none')+'">'+cp.fb.g+'</div>'
+      +'<div class="fb fbu" id="cf_'+idx+'_'+ci+'_u" style="display:'+(cur==='u'?'block':'none')+'">'+cp.fb.u+'</div>'
+      +'<div class="fb fbo" id="cf_'+idx+'_'+ci+'_o" style="display:'+(cur==='o'?'block':'none')+'">'+cp.fb.o+'</div>'
+      +'</div>';
+  }).join('');
+
+  const hasSk=stepStuck[idx].some(function(v){return v===1;});
+  const med=p.media?'<div class="mslot">📎 Video / image embed placeholder — add your hosted media here</div>':'';
+  const dn=p.doNothing?'<div class="dnb">🛍️ Doing less is often the correct move. Leave it alone.</div>':'';
+  const nxt=idx<3?'Move to Phase '+(idx+2)+': '+PH[idx+1].title.replace(/Phase \d+: /,'')+ ' →':'🍄‍🟫 Complete First Harvest →';
+  const pl=lnk('phase_'+idx+'_link','ph-link');
+
+  document.getElementById('ppanels').innerHTML=
+    '<div class="pc">'
+    +'<div style="margin-bottom:1rem"><div class="ph-title">'+p.title+'</div>'+pl+'<div class="ph-desc">'+p.desc+'</div><div class="ph-feel">'+p.feel+'</div></div>'
+    +med
+    +'<div class="slbl">Action Steps</div>'
+    +legend
+    +'<div class="sg">'+stepsHtml+'</div>'
+    +dn
+    +'<div class="slbl">Checkpoints</div>'
+    +cpsHtml
+    +'<div class="skbox" id="skb'+idx+'" style="display:'+(hasSk?'block':'none')+'">'
+      +'<div class="skt">🔴 Feeling stuck? Here are your options:</div>'
+      +'<div class="skbs">'
+        +'<button class="skb" onclick="showPhase('+idx+')">🔄 Retry this phase from the top</button>'
+        +'<button class="skb" onclick="sendPrompt(\'I am stuck on '+p.title.replace(/'/g,"\\'")+'. Can you help me troubleshoot?\')">🔍 Ask for help ↗</button>'
+        +'<button class="skb" onclick="sendPrompt(\'Where can I find an online mushroom growing community?\')">💬 Ask the community ↗</button>'
+      +'</div>'
+    +'</div>'
+    +'<button class="nxtbtn" onclick="markPhaseDone('+idx+')">'+nxt+'</button>'
+    +'</div>';
+}
+
+renderPhase(0);
+drawTub();
+</script>
